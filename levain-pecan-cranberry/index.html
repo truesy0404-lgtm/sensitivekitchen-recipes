@@ -1,0 +1,401 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>르방 피칸·크랜베리 컨트리브레드</title>
+<meta name="description" content="배수 조절, Baker's %, 단계별 타이머가 있는 피칸·크랜베리 르방빵 레시피 — by 센서티브키친">
+<meta property="og:type" content="website">
+<meta property="og:title" content="피칸·크랜베리 르방빵 레시피 · 센서티브키친">
+<meta property="og:description" content="배수 조절, Baker's %, 단계별 타이머가 있는 레시피 페이지">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A5%96%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --bg:#faf6ef; --card:#fff; --ink:#2b2118; --muted:#6b5d50; --line:#e4d9c8;
+  --accent:#b4572b; --accent-ink:#fff; --ok:#2f7d4f; --hl:#fff1c9; --hl-line:#e0a800;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:19px/1.6 -apple-system,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",system-ui,sans-serif}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer;touch-action:manipulation}
+main{max-width:820px;margin:0 auto;padding:0 16px 80px}
+h1{font-size:26px;line-height:1.3;margin:20px 0 4px}
+h2{font-size:23px;margin:32px 0 12px}
+.by{margin:0 0 4px;font-size:18px;color:var(--accent)}
+.by a{margin-left:10px;display:inline-block;padding:2px 12px;border:2px solid var(--accent);border-radius:999px;color:var(--accent);font-weight:700;text-decoration:none;font-size:16px}
+.by a[hidden]{display:none}
+.by a{margin-bottom:4px}
+.copy{margin-top:32px;padding:14px 16px;border:2px solid var(--line);border-radius:14px;background:var(--card);font-size:16px;line-height:1.6}
+.copy b{display:block;font-size:18px;margin-bottom:4px}
+.sub{color:var(--muted);font-size:17px;margin:0 0 12px}
+
+/* sticky 상단 */
+.top{position:sticky;top:0;z-index:10;background:var(--bg);padding:8px 0 10px;border-bottom:2px solid var(--line);margin:0 -16px;padding-left:16px;padding-right:16px}
+.scale{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.scale label{font-weight:700;font-size:18px;margin-right:2px}
+.scale button{min-width:56px;height:56px;border-radius:14px;border:2px solid var(--accent);background:var(--card);font-size:28px;font-weight:700;color:var(--accent)}
+.scale button:active{background:var(--accent);color:var(--accent-ink)}
+.scale input{width:92px;height:56px;border:2px solid var(--line);border-radius:14px;text-align:center;font-size:26px;font-weight:700;background:#fff}
+.presets{display:flex;gap:6px;margin-left:auto}
+.presets button{min-width:56px;font-size:19px;font-weight:700}
+.presets button.on{background:var(--accent);color:var(--accent-ink)}
+@media(max-width:480px){
+  .scale{flex-wrap:nowrap;gap:6px}
+  .scale label{display:none}
+  .scale button{min-width:48px;height:52px}
+  .scale input{width:64px;height:52px;font-size:22px}
+  .presets{gap:4px}
+  .presets button{min-width:44px;padding:0 4px;font-size:16px}
+}
+.sum{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}
+.sum div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:4px 6px;text-align:center}
+.sum small{display:block;color:var(--muted);font-size:13px;line-height:1.2}
+.sum b{font-size:20px;line-height:1.3;font-variant-numeric:tabular-nums}
+
+/* 재료표 */
+table{width:100%;border-collapse:collapse;background:var(--card);border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+th,td{padding:10px 12px;text-align:right;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+th:first-child,td:first-child{text-align:left}
+th{background:#f1e8d8;font-size:16px;color:var(--muted)}
+td.g{font-weight:800;font-size:22px}
+td.p{color:var(--muted)}
+tr.grp td{background:#f8f1e4;font-weight:700;font-size:15px;color:var(--muted);text-align:left;padding:4px 12px}
+td small{display:block;color:var(--muted);font-size:14px;line-height:1.3}
+
+/* 강조 카드 */
+.hls{display:grid;gap:12px}
+@media(min-width:640px){.hls{grid-template-columns:1fr 1fr}}
+.hl{background:var(--hl);border:3px solid var(--hl-line);border-radius:16px;padding:14px 16px}
+.hl .tag{display:inline-block;background:var(--hl-line);color:#2b2118;font-weight:800;font-size:14px;border-radius:999px;padding:0 10px}
+.hl .big{font-size:40px;font-weight:900;line-height:1.2;margin:4px 0 0}
+.hl p{margin:2px 0 0;font-size:17px}
+
+.batch{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;font-size:17px}
+.batch ul{margin:6px 0 0;padding-left:20px}
+.warn{background:#fdecea;border:2px solid #d9534f;border-radius:12px;padding:10px 14px;font-size:16px;margin-bottom:10px}
+
+/* 단계 */
+ol{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.step h3{margin:0 0 6px;font-size:21px;display:flex;gap:10px;align-items:baseline}
+.num{flex:none;display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;font-size:20px}
+.desc b{background:#f6e7c8;border-radius:6px;padding:0 4px;white-space:nowrap}
+.cmp{display:flex;flex-wrap:wrap;gap:6px 14px;margin:8px 0 0;font-size:17px}
+.cmp .plan{color:var(--muted)}
+.cmp .act{color:var(--ok);font-weight:700}
+.cmp .tl{font-weight:800}
+.note{font-size:16px;color:var(--muted);margin:4px 0 0}
+.timers{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.tm{display:flex;gap:6px}
+.tm .go{min-height:64px;min-width:170px;padding:6px 16px;border-radius:14px;border:2px solid var(--accent);background:#fff;text-align:left;line-height:1.25}
+.tm .go small{display:block;font-size:14px;color:var(--muted)}
+.tm .go b{font-size:26px;font-variant-numeric:tabular-nums}
+.tm .rs{width:56px;min-height:64px;border-radius:14px;border:2px solid var(--line);background:#fff;font-size:22px}
+.tm.run .go{background:var(--accent);color:#fff}
+.tm.run .go small{color:#ffe7da}
+.tm.pause .go{background:#fff6e0}
+.tm.done .go{background:var(--ok);border-color:var(--ok);color:#fff}
+.tm.done .go small{color:#d8f3e2}
+
+/* 알림 */
+#alarm{position:fixed;inset:0;z-index:50;background:rgba(43,33,24,.82);display:none;align-items:center;justify-content:center;padding:20px}
+#alarm.on{display:flex}
+#alarm div{background:#fff;border-radius:20px;padding:28px 24px;text-align:center;max-width:420px;width:100%}
+#alarm h2{margin:0 0 6px;font-size:30px}
+#alarm button{margin-top:16px;min-height:64px;width:100%;border:0;border-radius:14px;background:var(--accent);color:#fff;font-size:24px;font-weight:800}
+footer{color:var(--muted);font-size:15px;margin-top:28px}
+</style>
+</head>
+<body>
+<main>
+  <h1 id="title"></h1>
+  <p class="by">by <b>센서티브키친</b> <a id="yt" href="#" target="_blank" rel="noopener" hidden>▶ YouTube</a><a id="ig" href="#" target="_blank" rel="noopener" hidden>📷 Instagram</a></p>
+  <p class="sub" id="subtitle"></p>
+
+  <div class="top" id="top">
+    <div class="scale">
+      <label for="mult">배수</label>
+      <button type="button" id="minus" aria-label="배수 줄이기">−</button>
+      <input id="mult" type="number" inputmode="decimal" min="0.25" max="10" step="0.25" value="1">
+      <button type="button" id="plus" aria-label="배수 늘리기">+</button>
+      <div class="presets" id="presets"></div>
+    </div>
+    <div class="sum">
+      <div><small>총반죽량</small><b id="s-total"></b></div>
+      <div><small>총가수율</small><b id="s-hyd"></b></div>
+      <div><small>PFF</small><b id="s-pff"></b></div>
+      <div><small>염도</small><b id="s-salt"></b></div>
+    </div>
+  </div>
+
+  <h2>재료</h2>
+  <p class="sub" id="baseinfo"></p>
+  <table id="ing"></table>
+
+  <h2>공정</h2>
+  <ol id="steps"></ol>
+
+  <section class="copy">
+    <b>© 2026 센서티브키친 · All rights reserved</b>
+    이 페이지의 레시피(배합·공정·구성·문구)의 저작권은 <b style="display:inline;font-size:inherit">센서티브키친</b>에 있습니다.
+    <br>⚠️ 무단 복제·전재·재배포, 상업적 이용, 자신의 레시피처럼 게시하는 도용을 금지합니다.
+    <br>개인이 만들어 드시는 것은 자유이며, 공유할 때는 출처(센서티브키친)와 링크를 꼭 표기해 주세요.
+  </section>
+
+</main>
+
+<div id="alarm" role="alertdialog" aria-live="assertive"><div><h2 id="alarm-t">타이머 종료</h2><p id="alarm-d"></p><button type="button" id="alarm-x">알림 끄기</button></div></div>
+
+<script>
+/* ===== 레시피 데이터 (다른 레시피는 이 객체만 교체) ===== */
+const RECIPE = {
+  title: "피칸·크랜베리 르방빵",
+  subtitle: "당일완성형 · IDY 혼합 · 기준 밀가루 480g(르방 속 밀가루 포함)",
+  levainHydration: 1.0,           // 르방 수분율 100%
+  base: "기본 1배 = 바타르 2개 분량 · 총 약 969g",
+  ingredients: [
+    {grp:"밀가루"},
+    {id:"f1",   name:"뱀탯 유기농 강력분", g:280, type:"flour"},
+    {id:"f2",   name:"키알라 유기농 강력분", g:95, type:"flour"},
+    {id:"rye",  name:"호밀가루 T130", g:20, type:"flour"},
+    {id:"ww",   name:"통밀가루", g:30, type:"flour"},
+    {grp:"물 · 르방"},
+    {id:"water1", name:"물 · 오토리즈용", g:275, type:"water"},
+    {id:"water2", name:"물 · 후첨수", g:15, type:"water"},
+    {id:"levain", name:"르방", sub:"수분율 100%", g:110, type:"levain"},
+    {grp:"그 외"},
+    {id:"salt", name:"소금", g:8.65, type:"salt"},
+    {id:"sugar",name:"설탕", g:10, type:"other"},
+    {id:"butter",name:"무염버터", g:15, type:"other"},
+    {id:"idy",  name:"인스턴트 드라이이스트 IDY", g:0.5, type:"other"},
+    {id:"pecan",name:"피칸", g:60, type:"other"},
+    {id:"cran", name:"크랜베리", g:50, type:"other"}
+  ],
+  steps: [
+    {t:"오토리즈",
+     d:"① 반죽기 볼에 밀가루 4종(뱀탯 {f1} + 키알라 {f2} + 호밀 {rye} + 통밀 {ww})을 넣고 오토리즈용 물 {water1}를 붓습니다. ② 저속으로 1~2분, 마른 가루가 보이지 않을 때까지만 섞습니다 (글루텐을 일부러 키우지 않음). ③ 볼을 덮고 실온에서 30분 휴지합니다. ④ 후첨수 {water2}는 따로 덮어 보관합니다. ⑤ 휴지하는 동안 르방 상태를 확인하고 부재료(피칸·크랜베리)를 준비합니다.",
+     plan:"섞기 1~2분 + 휴지 30분",
+     timers:[{l:"오토리즈 휴지",m:30}]},
+    {t:"르방 · 이스트 믹싱",
+     d:"반죽기 저속으로 르방 {levain}과 IDY {idy}를 오토리즈 반죽에 넣고 혼합합니다. 이어서 설탕 {sugar}, 소금 {salt}을 넣고 탄력이 생길 때까지 믹싱합니다. 목표 DDT 24~25℃."},
+    {t:"후첨수 · 버터 투입",
+     d:"반죽이 받아들이는 만큼 후첨수 {water2}를 나누어 넣습니다. 버터 {butter}는 글루텐이 어느 정도 형성된 뒤 넣어 완전히 흡수시킵니다.",
+     plan:"약 5~8분"},
+    {t:"부재료 준비",
+     d:"피칸 {pecan}은 가볍게 로스팅한 뒤 완전히 식혀서 사용합니다. 크랜베리 {cran}는 반드시 짧게 불려 물기를 제거한 뒤 사용합니다. 두 재료는 벌크 발효의 1차 폴딩 때 섞어 넣습니다.",
+     plan:"피칸 로스팅 약 10분 · 크랜베리 불리기 약 10분 (오토리즈 휴지 중 진행)"},
+    {t:"벌크 발효 (폴딩 2회 고정)",
+     d:"25℃ 실온에서 진행합니다. 1차 폴딩(믹싱 후 40분, 피칸·크랜베리 {pecan}·{cran} 투입)과 2차 폴딩(그 후 40분) 두 차례 폴딩을 고정적으로 넣어 구조를 보강합니다. 전체 2.5~3.5시간을 기준으로 하되, 약 75~80% 부피 증가·표면 기포·탄력·흔들림으로 종료를 판단하세요.",
+     plan:"1차 폴딩 40분 · 2차 폴딩 +40분 / 전체 150~210분",
+     timers:[{l:"1차 폴딩까지",m:40},{l:"2차 폴딩까지",m:40},{l:"종료 확인(2차 폴딩 후)",m:70}]},
+    {t:"분할 · 프리셰이프",
+     d:"{split} 가볍게 프리셰이프한 뒤 10~15분 휴지합니다.",
+     plan:"휴지 10~15분",
+     timers:[{l:"벤치 휴지",m:10}]},
+    {t:"최종 성형",
+     d:"바타르로 성형해 봉합선이 위로 오도록 타원형 바네통에 넣습니다. 바네통 크기: 윗면 25 × 14 × 높이 7cm.",
+     plan:"약 10~15분"},
+    {t:"최종발효",
+     d:"25℃에서 진행합니다. 손가락으로 눌렀을 때 자국이 천천히 일부만 복원되는지 확인하고, 시간보다 상태를 우선 기준으로 삼으세요.",
+     plan:"45~90분",
+     timers:[{l:"최종발효",m:45},{l:"최종발효(최대)",m:90}]},
+    {t:"오븐 예열",
+     d:"SMEG 오븐과 스톤을 260~270℃로 예열합니다. 가능하면 적외선 온도계로 스톤 표면온도(목표 250℃ 이상)를 직접 확인하세요.",
+     plan:"60~90분",
+     timers:[{l:"예열",m:60}]},
+    {t:"굽기",
+     d:"쿠프를 낸 뒤 ① 초기 스팀 240~250℃ 10~12분 → ② 스팀 배출 후 220℃에서 10분. 심부온도 93~96℃와 크러스트 색을 함께 확인합니다.",
+     plan:"합계 20~22분",
+     note:"오븐마다 굽기 시간이 다를 수 있으니, 시간보다 크러스트 색과 심부온도를 보고 조절하세요."},
+    {t:"냉각",
+     d:"완전히 식힌 뒤 슬라이스합니다.",
+     plan:"최소 60분"}
+  ],
+  split: [ {name:"바타르", unit:485} ]
+};
+
+/* ===== 유틸 ===== */
+const $ = s => document.querySelector(s);
+const FAST = new URLSearchParams(location.search).has('fast');   // ?fast : 분→초 (테스트용)
+function trim(n,d){ return String(+n.toFixed(d)); }
+function fmtG(g){ return (g<10 ? trim(g,2) : trim(g,1)) + 'g'; }
+function fmtP(p){ return (p<1 ? trim(p,3) : trim(p,2)) + '%'; }
+function fmtTime(s){
+  s = Math.max(0, Math.ceil(s));
+  const h = Math.floor(s/3600), m = Math.floor(s%3600/60), x = s%60, p = n => String(n).padStart(2,'0');
+  return h ? `${h}:${p(m)}:${p(x)}` : `${p(m)}:${p(x)}`;
+}
+const ING = Object.fromEntries(RECIPE.ingredients.filter(i=>i.id).map(i=>[i.id,i]));
+
+/* 기준 밀가루 = 밀가루 합 + 르방 속 밀가루 (배수와 무관한 기준 1배 값) */
+const levainFlour1 = ING.levain.g / (1 + RECIPE.levainHydration);
+const levainWater1 = ING.levain.g - levainFlour1;
+const baseFlour1 = RECIPE.ingredients.filter(i=>i.type==='flour').reduce((a,i)=>a+i.g,0) + levainFlour1;
+const pct = g1 => g1 / baseFlour1 * 100;     // Baker's % — 배수에 따라 변하지 않음
+
+let mult = 1;
+
+/* ===== 렌더 ===== */
+function buildIngredients(){
+  let h = '<tr><th>재료</th><th>g</th><th>Baker\'s %</th></tr>';
+  for(const i of RECIPE.ingredients){
+    if(i.grp){ h += `<tr class="grp"><td colspan="3">${i.grp}</td></tr>`; continue; }
+    h += `<tr><td>${i.name}${i.sub?`<small>${i.sub}</small>`:''}</td><td class="g" data-g="${i.id}"></td><td class="p">${fmtP(pct(i.g))}</td></tr>`;
+  }
+  $('#ing').innerHTML = h;
+}
+function totals(){
+  const sum = RECIPE.ingredients.filter(i=>i.id).reduce((a,i)=>a+i.g,0);
+  const water1 = ING.water1.g + ING.water2.g + levainWater1;
+  return {
+    total: sum*mult,
+    hyd: water1 / baseFlour1 * 100,
+    pff: levainFlour1 / baseFlour1 * 100,
+    salt: ING.salt.g / baseFlour1 * 100
+  };
+}
+function splitText(){
+  const total = totals().total;
+  return RECIPE.split.map(s=>{
+    const r = total / s.unit, n = Math.round(r);
+    if(n < 1 || Math.abs(r-n) > 0.05) return null;   // 개수가 딱 떨어질 때만 표시
+    return `${s.name} ${fmtG(total/n)}씩 ${n}개`;
+  }).filter(Boolean).join(', 또는 ') + '로 분할합니다.';
+}
+function fillScaled(){
+  for(const i of RECIPE.ingredients) if(i.id) $(`[data-g="${i.id}"]`).textContent = fmtG(i.g*mult);
+  const t = totals();
+  $('#s-total').textContent = Math.round(t.total).toLocaleString('ko-KR') + 'g';
+  $('#s-hyd').textContent = trim(t.hyd,2) + '%';
+  $('#s-pff').textContent = trim(t.pff,2) + '%';
+  $('#s-salt').textContent = trim(t.salt,2) + '%';
+  document.querySelectorAll('.desc').forEach(el=>{
+    el.innerHTML = el.dataset.tpl.replace(/\{(\w+)\}/g,(_,k)=> k==='split' ? splitText() : `<b>${fmtG(ING[k].g*mult)}</b>`);
+  });
+  document.querySelectorAll('#presets button').forEach(b=>b.classList.toggle('on', +b.dataset.v===mult));
+}
+
+/* ===== 타이머 ===== */
+const timers = {};   // id → {total, left, end, state:'idle'|'run'|'pause'|'done', el, label}
+let audioCtx = null, wakeLock = null, alarmTimer = null;
+
+function beep(){
+  try{
+    audioCtx = audioCtx || new (window.AudioContext||window.webkitAudioContext)();
+    if(audioCtx.state==='suspended') audioCtx.resume();
+    const now = audioCtx.currentTime;
+    for(let k=0;k<6;k++){
+      const o = audioCtx.createOscillator(), g = audioCtx.createGain();
+      o.type='square'; o.frequency.value = k%2? 880 : 660;
+      g.gain.setValueAtTime(.0001, now+k*.35); g.gain.exponentialRampToValueAtTime(.25, now+k*.35+.02); g.gain.exponentialRampToValueAtTime(.0001, now+k*.35+.3);
+      o.connect(g).connect(audioCtx.destination); o.start(now+k*.35); o.stop(now+k*.35+.32);
+    }
+  }catch(e){}
+}
+async function updateWake(){
+  const any = Object.values(timers).some(t=>t.state==='run');
+  try{
+    if(any && !wakeLock && navigator.wakeLock){
+      wakeLock = await navigator.wakeLock.request('screen');
+      wakeLock.addEventListener('release',()=>{wakeLock=null});
+    }else if(!any && wakeLock){ await wakeLock.release(); wakeLock=null; }
+  }catch(e){}
+}
+function render(t){
+  const b = t.el;
+  b.className = 'tm ' + ({idle:'',run:'run',pause:'pause',done:'done'})[t.state];
+  const status = {idle:'눌러서 시작',run:'진행 중 · 누르면 일시정지',pause:'일시정지 · 누르면 계속',done:'종료 · 누르면 초기화'}[t.state];
+  b.querySelector('.go').innerHTML = `<small>${t.label} · ${t.min}분</small><b>${t.state==='idle'?fmtTime(t.total):t.state==='done'?'완료!':fmtTime(t.left)}</b><small>${status}</small>`;
+}
+function ring(t){
+  beep();
+  try{ navigator.vibrate && navigator.vibrate([400,200,400,200,400]); }catch(e){}
+  try{ if('Notification' in window && Notification.permission==='granted') new Notification('타이머 종료', {body: `${t.step} · ${t.label}`}); }catch(e){}
+  $('#alarm-d').textContent = `${t.step} · ${t.label} (${t.min}분)`;
+  $('#alarm').classList.add('on');
+  clearInterval(alarmTimer); alarmTimer = setInterval(beep, 3000);
+}
+function press(t){
+  if(t.state==='idle'){
+    try{ if('Notification' in window && Notification.permission==='default') Notification.requestPermission(); }catch(e){}
+    audioCtx = audioCtx || (()=>{try{return new (window.AudioContext||window.webkitAudioContext)()}catch(e){return null}})();
+    t.left = t.total; t.end = Date.now() + t.left*1000; t.state='run';
+  }else if(t.state==='run'){ t.left = (t.end-Date.now())/1000; t.state='pause'; }
+  else if(t.state==='pause'){ t.end = Date.now()+t.left*1000; t.state='run'; }
+  else reset(t);
+  render(t); updateWake();
+}
+function reset(t){ t.state='idle'; t.left=t.total; render(t); updateWake(); }
+setInterval(()=>{
+  for(const t of Object.values(timers)){
+    if(t.state!=='run') continue;
+    t.left = (t.end-Date.now())/1000;
+    if(t.left<=0){ t.left=0; t.state='done'; render(t); updateWake(); ring(t); }
+    else render(t);
+  }
+},250);
+document.addEventListener('visibilitychange',()=>{ if(!document.hidden) updateWake(); });
+$('#alarm-x').onclick = ()=>{ $('#alarm').classList.remove('on'); clearInterval(alarmTimer); };
+
+/* ===== 단계 ===== */
+function buildSteps(){
+  const ol = $('#steps');
+  RECIPE.steps.forEach((s,idx)=>{
+    const li = document.createElement('li'); li.className='step';
+    let h = `<h3><span class="num">${idx+1}</span>${s.t}</h3><div class="desc" data-tpl="${s.d.replace(/"/g,'&quot;')}"></div>`;
+    if(s.plan || s.act){
+      h += '<div class="cmp">';
+      if(s.plan) h += `<span class="plan"><span class="tl">계획:</span> ${s.plan}</span>`;
+      if(s.plan && s.act) h += '<span class="plan">/</span>';
+      if(s.act)  h += `<span class="act"><span class="tl">실측(10.10):</span> ${s.act}</span>`;
+      h += '</div>';
+    }
+    if(s.note) h += `<p class="note">${s.note}</p>`;
+    h += '<div class="timers"></div>';
+    li.innerHTML = h;
+    const box = li.querySelector('.timers');
+    (s.timers||[]).forEach((tm,k)=>{
+      const t = {step:`${idx+1}. ${s.t}`, label:tm.l, min:tm.m, total:tm.m*(FAST?1:60), state:'idle'};
+      t.left = t.total;
+      const el = document.createElement('div');
+      el.innerHTML = '<button type="button" class="go"></button><button type="button" class="rs" aria-label="초기화">↺</button>';
+      el.querySelector('.go').onclick = ()=>press(t);
+      el.querySelector('.rs').onclick = ()=>reset(t);
+      t.el = el; timers[`${idx}-${k}`] = t; render(t); box.appendChild(el);
+    });
+    if(!(s.timers||[]).length) box.remove();
+    ol.appendChild(li);
+  });
+}
+
+/* ===== 배수 컨트롤 ===== */
+function setMult(v){
+  v = Math.min(10, Math.max(0.25, Math.round(v*100)/100));
+  if(!isFinite(v)) v = 1;
+  mult = v; $('#mult').value = v;
+  try{ localStorage.setItem('recipe-mult', v); }catch(e){}
+  fillScaled();
+}
+$('#minus').onclick = ()=>setMult(mult-0.5);
+$('#plus').onclick  = ()=>setMult(mult+0.5);
+$('#mult').addEventListener('change', e=>setMult(parseFloat(e.target.value)));
+[0.5,1,2].forEach(v=>{
+  const b = document.createElement('button'); b.type='button'; b.dataset.v=v; b.textContent='×'+v;
+  b.onclick=()=>setMult(v); $('#presets').appendChild(b);
+});
+
+/* ===== 시작 ===== */
+$('#title').textContent = RECIPE.title;
+$('#subtitle').textContent = RECIPE.subtitle;
+$('#baseinfo').textContent = RECIPE.base;
+document.title = RECIPE.title;
+const YOUTUBE_URL = 'https://www.youtube.com/@%EC%84%BC%EC%84%9C%ED%8B%B0%EB%B8%8C%ED%82%A4%EC%B9%9C';     // 센서티브키친 YouTube 주소 (비워두면 버튼이 숨겨짐)
+const INSTAGRAM_URL = 'https://www.instagram.com/sensitivekitchen0/';   // 센서티브키친 Instagram 주소 (비워두면 버튼이 숨겨짐)
+[['#yt',YOUTUBE_URL],['#ig',INSTAGRAM_URL]].forEach(([id,u])=>{ if(u){ const a=$(id); a.href=u; a.hidden=false; } });
+buildIngredients(); buildSteps();
+let saved = 1; try{ saved = parseFloat(localStorage.getItem('recipe-mult')) || 1; }catch(e){}
+setMult(saved);
+</script>
+</body>
+</html>
